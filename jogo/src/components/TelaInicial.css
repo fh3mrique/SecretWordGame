@@ -1,0 +1,9 @@
+.telaInicial h1{
+    font-size: 3.5em;
+}
+
+.telaInicial p {
+    margin-bottom: 2rem;
+    color: rgb(227, 227, 52);
+}
+
