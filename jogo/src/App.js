@@ -60,8 +60,8 @@ function App() {
   setLetras(letras)
   setPicketCategoria(categoria)
  
-  setGameInicio(stages[1].nome);
   
+  setGameInicio(stages[1].nome);
   
  }
 
