@@ -23,9 +23,46 @@ function App() {
   const [gameInicio, setGameInicio] = useState(stages[0].nome);
   const [palavras] = useState(palavraLista)
 
+  const [picketPalavra, setPicketPalavra] = useState("");
+  const [picketCategoria, setPicketCategoria] = useState("");
+  const [letras, setLetras] = useState([]);
+
+  const picketPalavraAndCategoria = () =>{
+    //pegando uma categoria aleatória
+    const categorias = Object.keys(palavras);
+    const categoria = categorias[Math.floor(Math.random() * Object.keys(categorias).length)];
+
+    console.log(categoria)
+
+    //pegando uma palavra aleatória
+    const palavra = palavras[categoria][Math.floor(Math.random() * palavras[categoria].length)];
+    console.log(palavra)
+
+    return{palavra, categoria};
+  }
+  
+ 
   //Iniciar o jogo palavra secreta
- const startGame = () =>{
+ const startGame = () => {
+
+  const {palavra, categoria} = picketPalavraAndCategoria()
+
+  //Criando um array de letras
+  let letrasPalavras = palavra.split("")
+
+  letrasPalavras = letrasPalavras.map((valor) => valor.toLowerCase())
+  
+  console.log(palavra, categoria)
+  console.log(letrasPalavras)
+
+  //Preenchendo states
+  setPicketPalavra(palavra);
+  setLetras(letras)
+  setPicketCategoria(categoria)
+ 
   setGameInicio(stages[1].nome);
+  
+  
  }
 
  //Processar letra inserida
