@@ -131,7 +131,7 @@ function App() {
        letrasErradas={letrasErradas} 
        chances={chances} 
        score={score} />}
-      {gameInicio === 'end' && <GameOver retryGame={retryGame}/>}
+      {gameInicio === 'end' && <GameOver retryGame={retryGame} score={score}/>}
     </div>
   );
 }
