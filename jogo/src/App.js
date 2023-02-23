@@ -27,6 +27,12 @@ function App() {
   const [picketCategoria, setPicketCategoria] = useState("");
   const [letras, setLetras] = useState([]);
 
+  const [letrasAdivinhadas, setLetrasAdivinhadas] = useState([]);
+  const [letrasErradas, setLetrasErradas] = useState([]);
+  const [chances, setChances] = useState(3);
+  const [score, setScore] = useState(0)
+  
+
   const picketPalavraAndCategoria = () =>{
     //pegando uma categoria aleatória
     const categorias = Object.keys(palavras);
@@ -57,7 +63,7 @@ function App() {
 
   //Preenchendo states
   setPicketPalavra(palavra);
-  setLetras(letras)
+  setLetras(letrasPalavras)
   setPicketCategoria(categoria)
  
   
@@ -78,7 +84,14 @@ function App() {
   return (
     <div className="App">
       {gameInicio === 'start' && <TelaInicial startGame={startGame}/>}
-      {gameInicio === 'game' && <Game verificarLetra ={verificarLetra}/>}
+      {gameInicio === 'game' && <Game verificarLetra ={verificarLetra}
+       picketPalavra={picketPalavra} 
+       picketCategoria={picketCategoria} 
+       letras={letras} 
+       letrasAdivinhada = {letrasAdivinhadas} 
+       letrasErradas={letrasErradas} 
+       chances={chances} 
+       score={score} />}
       {gameInicio === 'end' && <GameOver retryGame={retryGame}/>}
     </div>
   );
