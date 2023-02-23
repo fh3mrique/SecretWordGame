@@ -1,6 +1,19 @@
+import { useState, useRef} from "react";
 import "./Game.css";
 
 const Game = ({verificarLetra, picketPalavra,picketCategoria, letras, letrasAdivinhada, letrasErradas, chances, score}) => {
+  const [letra, setLetra] = useState()
+  const letraInputRef = useRef(null)
+
+  const manipularSubmit=(evento)=>{
+    evento.preventDefault();
+    
+    verificarLetra(letra)
+    setLetra("")
+
+    letraInputRef.current.focus() 
+  }
+
   return (
     <div className="game">
       <p className="pontos">
@@ -18,8 +31,13 @@ const Game = ({verificarLetra, picketPalavra,picketCategoria, letras, letrasAdiv
       </div>
       <div className="letraContainer">
         <p>Tente adivilhar uma letra da palavra</p>
-        <form>
-          <input type="text" name="letra" maxLength= "1" required />
+        <form onSubmit={manipularSubmit}>
+          <input type="text" name="letra"
+           maxLength= "1" 
+           required 
+           onChange={(evento) => setLetra(evento.target.value)} 
+           value={letra} 
+           ref={letraInputRef}/>
           <button>Jogar!</button>
         </form>
       </div>

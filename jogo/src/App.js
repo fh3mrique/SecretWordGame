@@ -72,8 +72,8 @@ function App() {
  }
 
  //Processar letra inserida
- const verificarLetra = () => {
-    setGameInicio(stages[2].nome);
+ const verificarLetra = (letra) => {
+    console.log(letra)
  }
 
  //Restatar o jogo
