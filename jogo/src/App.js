@@ -94,13 +94,29 @@ function App() {
       letraNormalizada
     ])
   }
+  setChances((atualChances)=> atualChances - 1)
+  
  }
 
- console.log(letrasAdivinhadas);
- console.log(letrasErradas);
+ const  limparStatesLetra = ()=> {
+    setLetrasAdivinhadas([])
+    setLetrasErradas([])
+ }
+
+ useEffect(()=>{
+    if (chances <= 0){
+      //resetar todos os states
+      limparStatesLetra()
+
+      setGameInicio(stages[2].nome)
+    }
+ }, [chances])
 
  //Restatar o jogo
  const retryGame = () =>{
+  setScore(0);
+  setChances(3)
+
   setGameInicio(stages[0].nome);
  }
 
