@@ -73,8 +73,31 @@ function App() {
 
  //Processar letra inserida
  const verificarLetra = (letra) => {
-    console.log(letra)
+    
+  const letraNormalizada = letra.toLowerCase();
+
+  //checar se a letra já foi utizada
+  if(letrasAdivinhadas.includes(letraNormalizada) || letrasErradas.includes(letraNormalizada)){
+    return
+  }
+
+  //set a letra adivinhada ou remova um palpite
+  if(letras.includes(letraNormalizada)){
+    setLetrasAdivinhadas((atualLetrasAdivinhadas) => [
+      ...atualLetrasAdivinhadas, 
+      letraNormalizada
+    ])
+  }
+  else{
+    setLetrasErradas((atualLetrasErradas) => [
+      ...atualLetrasErradas, 
+      letraNormalizada
+    ])
+  }
  }
+
+ console.log(letrasAdivinhadas);
+ console.log(letrasErradas);
 
  //Restatar o jogo
  const retryGame = () =>{
